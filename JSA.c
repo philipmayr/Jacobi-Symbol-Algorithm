@@ -6,10 +6,7 @@
 int compute_Jacobi_symbol(int m, int n)
 {
     m %= n;
-    if (m == 0)
-    {
-        return 0;
-    }
+    if (m == 0) return 0;
     
     int j = 1; 
     int t = 0;
@@ -25,14 +22,8 @@ int compute_Jacobi_symbol(int m, int n)
         j = -1;
     }
     
-    if (m == 1)
-    {
-        return j;
-    }
-    else
-    {
-        return j * (pow(-1, ((m - 1) * ((n - 1) / 4)))) * compute_Jacobi_symbol(n, m);
-    }
+    if (m == 1) return j;
+    else return j * (pow(-1, ((m - 1) * ((n - 1) / 4)))) * compute_Jacobi_symbol(n, m);
     
     return 0;
 }
@@ -49,14 +40,8 @@ int main()
     
     printf("\n");
     
-    if (compute_Jacobi_symbol(m, n))
-    {
-        printf("%d is a quadradic residue modulo %d", n, m);
-    }
-    else
-    {
-        printf("%d is a quadradic nonresidue modulo %d", n, m);
-    }
+    if (compute_Jacobi_symbol(m, n)) printf("%d is a quadradic residue modulo %d", n, m);
+    else printf("%d is a quadradic nonresidue modulo %d", n, m);
 
     return 0;
 }
