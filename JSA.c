@@ -1,7 +1,6 @@
 // Compute Jacobi Symbol
 
 #include <stdio.h>
-#include <math.h>
 
 int exponentiate(int base, int index)
 {
