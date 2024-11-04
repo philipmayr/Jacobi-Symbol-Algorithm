@@ -13,7 +13,7 @@ int compute_Jacobi_symbol(int m, int n)
     
     while (m % 2 == 0)
     {
-        m /= 2;
+        m >>= 1;
         t += 1;
     }
     
