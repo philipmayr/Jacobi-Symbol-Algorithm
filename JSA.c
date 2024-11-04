@@ -3,6 +3,24 @@
 #include <stdio.h>
 #include <math.h>
 
+int exponentiate(int base, int index)
+{
+    int power = 1;
+    
+    if (index == 0) return power;
+    if (index == 1) return base;
+    
+    while (index > 0)
+    {
+        if (index & 1) power *= base;
+        
+        base *= base;
+        index >>= 1;
+    }
+    
+    return power;    
+}
+
 int compute_Jacobi_symbol(int m, int n)
 {
     m %= n;
@@ -14,16 +32,14 @@ int compute_Jacobi_symbol(int m, int n)
     while (m % 2 == 0)
     {
         m >>= 1;
-        t += 1;
+        t++;
     }
     
     if ((n == 3 % 8 || n == -3 % 8) && t % 2 != 2)
-    {
         j = -1;
-    }
     
     if (m == 1) return j;
-    else return j * (pow(-1, ((m - 1) * ((n - 1) / 4)))) * compute_Jacobi_symbol(n, m);
+    else return j * exponentiate(-1, (m - 1) * ((n - 1) / 4)) * compute_Jacobi_symbol(n, m);
     
     return 0;
 }
