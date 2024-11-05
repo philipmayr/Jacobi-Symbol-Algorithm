@@ -28,7 +28,7 @@ int evaluate_Jacobi_symbol(int m, int n)
     int j = 1; 
     int t = 0;
     
-    while (m % 2 == 0)
+    while (~m & 1)
     {
         m >>= 1;
         t++;
